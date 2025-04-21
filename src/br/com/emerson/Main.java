@@ -1,9 +1,17 @@
+package br.com.emerson;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class Main {
+    public static List<Pessoas> filtrarMulheres(List<Pessoas> lista) {
+        return lista.stream()
+                .filter(p -> p.getSexo().equalsIgnoreCase("Feminino"))
+                .collect(Collectors.toList());
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         List<Pessoas> lista = new ArrayList<>();
@@ -24,11 +32,10 @@ public class Main {
             }
         }
 
-        List<Pessoas> mulheres = lista.stream()
-                .filter(p -> p.getSexo().equalsIgnoreCase("Feminino"))
-                .collect(Collectors.toList());
+        List<Pessoas> mulheres = filtrarMulheres(lista);
 
         System.out.println("\nMulheres na lista:");
         mulheres.forEach(p -> System.out.println(p.getNome()));
     }
 }
+
